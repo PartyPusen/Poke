@@ -1,8 +1,8 @@
 import random
 import time
-
+ 
 Amount = 0
-Balance = 10000
+Balance = 10000 
 
 Number = ["00 - Green", "0 - Green", "1 - Red", "2 - Black", "3 - Red", "4 - Black", 
         "5 - Red", "6 - Black", "7 - Red", "8 - Black", "9 - Red", "10 - Black",

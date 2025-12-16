@@ -83,10 +83,11 @@ def Betting():
 #------------------------#
 #|       Roulette       |#
 #------------------------#
+Balance = 10000
+
 while True:
 
     Amount = 0
-    Balance = 10000 
 
     Number = ["00 - Green", "0 - Green", "1 - Red", "2 - Black", "3 - Red", "4 - Black", 
             "5 - Red", "6 - Black", "7 - Red", "8 - Black", "9 - Red", "10 - Black",
@@ -111,8 +112,72 @@ while True:
     WheelSpin = []
     for _ in range(1):
         WheelSpin.append(SpinWheel(Number))
+    
+    Score = WheelSpin[0]
 
-    Welcome()
-    Betting()
-    PlayAgain()
+    print("Welcome to Roulette!")
+    print("-----------------------")
+    print("Place your bet on Red, Black, or Green, ")
+    print("You can also bet on Odd or Even numbers, ")
+    Bet = input("Or you could try to guess the exact number (0-36, 00) \nRed, Black or Green - Number (0-36, 00) - Odd or Even: ")
+    Bet = Bet.strip().lower()
+    Amount = input("Enter the amount you want to bet: $")
+
+    print("Spinning the wheel...")
+    time.sleep(0.5)
+    print("...")
+    time.sleep(0.5)
+    print("...")
+    time.sleep(0.5)
+    print("The ball landed on:", Score)
+
+    if Bet == 'red':
+        if Score in Red:
+            print(f"You win! +{Amount}")
+            print(f"Your new balance is: ${Balance + int(Amount)}")
+            Balance += int(Amount)
+
+    elif Bet == 'black':
+        if Score in Black:
+            print(f"You win! +{Amount}")
+            print(f"Your new balance is: ${Balance + int(Amount)}")
+            Balance += int(Amount)
+
+    elif Bet == 'green':
+        if Score in Green:
+            print(f"You win! +{Amount * 14}")
+            print(f"Your new balance is: ${Balance + int(Amount * 14)}")
+            Balance += int(Amount * 14)
+
+    elif Bet == 'odd':
+        if (Score & 1) != 0:
+            print(f"You win! +{Amount}")
+            print(f"Your new balance is: ${Balance + int(Amount)}")
+            Balance += int(Amount)
+
+    elif Bet == 'even':
+        if (Score & 1) == 0:
+            print(f"You win! +{Amount}")
+            print(f"Your new balance is: ${Balance + int(Amount)}")
+            Balance += int(Amount)
+    
+    elif Bet in Score:
+        print(f"You win! +{Amount * 36}")
+        print(f"Your new balance is: ${Balance + int(Amount * 36)}")
+        Balance += int(Amount * 36)
+    
+    else:
+        print("You lose!")
+        Balance -= int(Amount)
+        print(f"-{Amount}")
+        print(f"Your new balance is: ${Balance}")
+    
+    print("Do you want to play again? (yes/no)")
+    yesorno = input().lower().strip()
+    if yesorno == 'yes':
+        continue
+    elif yesorno == 'no':
+        print("Thanks for playing!")
+        break
+
     continue

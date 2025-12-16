@@ -149,13 +149,13 @@ while True:
             print(f"Your new balance is: ${Balance + int(Amount * 14)}")
             Balance += int(Amount * 14)
 
-    elif Bet == 'odd':
+    elif Bet == 'odd': #Doesn't work properly
         if (Score & 1) != 0:
             print(f"You win! +{Amount}")
             print(f"Your new balance is: ${Balance + int(Amount)}")
             Balance += int(Amount)
 
-    elif Bet == 'even':
+    elif Bet == 'even': #Doesn't work properly
         if (Score & 1) == 0:
             print(f"You win! +{Amount}")
             print(f"Your new balance is: ${Balance + int(Amount)}")
